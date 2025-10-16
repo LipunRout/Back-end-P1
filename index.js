@@ -26,6 +26,4 @@ app.get("/profile/:username/:age", (req, res) => {
   res.send(`welcome ${req.params.username} ${req.params.age}`);
 });
 
-app.listen(3000, () => {
-  console.log("No error");
-});
+app.listen(3000)
