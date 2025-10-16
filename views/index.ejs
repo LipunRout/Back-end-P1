@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>My App</title>
     <link rel="stylesheet" href="/stylesheets/styles.css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
@@ -32,18 +32,17 @@
         </form>
       </div>
       <div class="tasks p-10 flex gap-3 flex-wrap text-white">
-        <% if(files.length > 0){ %> 
+        <% if(files && files.length > 0){ %>
           <% files.forEach((val)=>{ %>
-
-        <div class="m-w-72 task  px-3 py-4 bg-zinc-800 rounded-md">
-          <h1 class="tex-white text-3xl tracking-tighter"><%= val %></h1>
-          <a href="" class="text-blue-500 inline-block mt-3">Read more.</a>
-        </div>
-
-        <% }) %>
-      <% }else{ %>
-        <h3 class="mt-3 text-zinc-300">No Task Yet.</h3>
-        <%} %>
+            <div class="m-w-72 task px-3 py-4 bg-zinc-800 rounded-md">
+              <h1 class="text-white text-3xl tracking-tighter"><%= val %></h1>
+              <a href="" class="text-blue-500 inline-block mt-3">Read more.</a>
+            </div>
+          <% }) %>
+        <% } else { %>
+          <h3 class="mt-3 text-zinc-300">No Task Yet.</h3>
+        <% } %>
+        
       </div>
     </div>
     <script src="/javascripts/script.js"></script>
