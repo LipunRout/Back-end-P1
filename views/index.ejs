@@ -14,15 +14,14 @@
           <input
             class="block w-full px-5 py-2 rounded-md outline-none bg-zinc-800 mt-2"
             type="text"
-            placeholder="Tittle Here!!"
+            placeholder="Tittle"
             name="title"
           />
           <textarea
             class="mt-2 w-full rounded-md outline-none block px-5 py-2 bg-zinc-800 resize-none"
             name="details"
             id=""
-            placeholder="Write the text here!!"
-            
+            placeholder="Write Your Task"
           ></textarea>
           <input
             class="mt-2 bg-blue-600 px-5 py-2 rounded-md cursor-pointer"
@@ -32,17 +31,22 @@
         </form>
       </div>
       <div class="tasks p-10 flex gap-3 flex-wrap text-white">
-        <% if(files && files.length > 0){ %>
-          <% files.forEach((val)=>{ %>
-            <div class="m-w-72 task px-3 py-4 bg-zinc-800 rounded-md">
-              <h1 class="text-white text-3xl tracking-tighter"><%= val %></h1>
-              <a href="" class="text-blue-500 inline-block mt-3">Read more.</a>
-            </div>
-          <% }) %>
-        <% } else { %>
-          <h3 class="mt-3 text-zinc-300">No Task Yet.</h3>
+        <% if(files && files.length > 0){ %> <% files.forEach((val)=>{ %>
+        <div class="m-w-72 task px-3 py-4 bg-zinc-800 rounded-md">
+          <h1 class="text-white text-3xl tracking-tighter"><%= val %></h1>
+
+          <div class="flex w-full justify-between items-center mt-3">
+            <a href="/files/<%= val %>" class="text-blue-500 inline-block "
+              >Read more.</a
+            >
+            <a href="/edit/<%= val %>" class="text-zinc-600 inline-block "
+              >Edit filename</a
+            >
+          </div>
+        </div>
+        <% }) %> <% } else { %>
+        <h3 class="mt-3 text-zinc-300">No Task Yet.</h3>
         <% } %>
-        
       </div>
     </div>
     <script src="/javascripts/script.js"></script>

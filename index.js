@@ -19,11 +19,25 @@ app.post("/create", (req, res) => {
     res.redirect('/');
   })
 });
-app.get("/profile/:username", (req, res) => {
-  res.send(`welcome ${req.params.username}`);
+
+
+app.get("/files/:filename", (req, res) => {
+  
+  fs.readFile(`./files/${req.params.filename}`,"utf-8",(err,filedata)=>{
+    
+    res.render('show',{filename:req.params.filename,filedata:filedata});
+    
+  }) 
 });
-app.get("/profile/:username/:age", (req, res) => {
-  res.send(`welcome ${req.params.username} ${req.params.age}`);
+
+app.get("/edit/:filename", (req, res) => {
+  res.render('edit',{filename:req.params.filename})
+});
+
+app.post("/edit", (req, res) => {
+  fs.rename(`./files/${req.body.previous}`,`./files/${req.body.new}`,(err)=>{
+    res.redirect('/')
+  })
 });
 
 app.listen(3000)
